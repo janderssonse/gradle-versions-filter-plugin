@@ -5,6 +5,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.38.0"
     id("org.owasp.dependencycheck") version "6.1.2"
     id("pl.allegro.tech.build.axion-release") version "1.12.1"
+    id("com.gradle.plugin-publish") version "0.13.0"
 }
 
 group = "se.ascp.gradle"
@@ -27,10 +28,18 @@ tasks {
     }
 }
 
+pluginBundle {
+    website = "https://github.com/jandersson-svt/gradle-versions-filter-plugin"
+    vcsUrl = "git@github.com:jandersson-svt/gradle-versions-filter-plugin.git"
+    tags = listOf("versions", "filter")
+}
+
 gradlePlugin {
     plugins {
         create("simplePlugin") {
             id = "se.ascp.gradle.gradle-versions-filter"
+            displayName = "Gradle Versions Filter Plugin"
+            description = "Extension of Gradle Versions Plugin (discovering dependency updates) with opinionated defaults."
             implementationClass = "se.ascp.gradle.GradleVersionsFilterPlugin"
         }
     }
@@ -45,8 +54,6 @@ scmVersion {
 
 dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:[0.38.0,1.0.0)")
-
-    implementation("io.github.microutils:kotlin-logging:2.0.6")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.1")

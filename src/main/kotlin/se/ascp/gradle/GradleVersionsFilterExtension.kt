@@ -9,4 +9,5 @@ open class GradleVersionsFilterExtension {
     var exclusiveQualifiers: List<String> = listOf()
     var defaultInclusive: Boolean = false
     var strictSemVer: Boolean = true
+    var log = false
 }

@@ -7,16 +7,17 @@ A simple Gradle plugin, built on the [Gradle Versions Plugin](https://github.com
 
 ## Why?
 
-The Gradle Version Plugin leaves it to the user to configure what is a valid release.
+The Gradle Version Plugin (which we love) leaves it up to the user to [configure and define](https://github.com/ben-manes/gradle-versions-plugin#revisions) what is a stable or an unstable version.
 
-It became tiresome to copying a include or exclude policy to every project in a big codebase, so why not make a plugin out of it.
-Having less configuration in the build scripts, is better.. and, It is fun to write a Gradle plugin with Kotlin :)
+It might become tiresome to add an include or exclude policy to every project in a big codebase, so why not make a plugin out of it.
+Besides that, to aggregate the configuration in the build scripts is better
+(and last and least, It is fun to write a Gradle plugin with Kotlin :)
 
 ## How?
 
 The plugin sets a sane default on what should be seen as the latest release. It either does this by having an inclusive (only include versions with these qualifiers) or the opposite, an exclusive policy.
 
-It can also optionally (default actually) use only SemVer-compatible releases.
+It can also optionally (default actually) use only [SemVer-compatible](https://semver.org/) releases.
 
 ## Usage
 
@@ -28,21 +29,23 @@ plugins {
 }
 ```
 
+Run
 
 ```shell
 $ ./gradlew dependencyUpdates
 ```
 
-And that should be fine enough for most.
+And that should be good enough for most people.
 
-Options:
+Configurable Options:
 
 Option               | Default                                    | Description
 -------------------- | -----------------------------------------  | --------------
-defaultInclusive     | false                                      | The default strategy, excludes as default i.e. use the exclusiveQualifiers
+defaultInclusive     | false                                      | The default strategy, excludes as default i.e. use the exclusiveQualifiers, if true, use inclusive Qualifiers
 inclusiveQualifiers  | "RELEASE","FINAL","GA"                     | The default inclusive qualifiers (if inclusive strategy is used) 
 exclusiveQualifiers  | "alpha","beta","rc","cr","m","preview","b" | The default exclusive qualifiers (if exclusive strategy is used) 
 strictSemVer         | true                                       | Only show strict SemVer-validated versions
+log                  | false                                       | More verbose debug messages
 
 .Example Configuration
 ```kotlin
@@ -51,6 +54,20 @@ versionsFilter {
     defaultInclusive = true
 }
 ```
+## Example output
+
+
+_Default Gradle Versions output_
+
+![](<./img/gradleversionsplugin.png>)
+
+
+_Default Gradle Versions Filter output (notice it lists latest stable versions)_
+
+![](<./img/gradleversionsfilterplugin.png>)
+
+
+## Notes
 
 This plugin should probably be deprecated at some point, if the options are given as a Pull Request (and accepted) to the original plugin.
 

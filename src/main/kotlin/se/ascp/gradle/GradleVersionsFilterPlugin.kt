@@ -40,11 +40,11 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
                     it.all {
                         val semVerOk = semVerOk(filterOptions, it)
                         if (!semVerOk) {
-                            log.quiet("Skipping ${it.candidate.version} due to no semantic versioning")
+                            log("Skipping ${it.candidate.version} due to no semantic versioning", filterOptions)
                             it.reject("Release candidate")
                         }
                         if (semVerOk && rejectVersion(filterOptions, it.candidate.version)) {
-                            log.quiet("Skipping ${it.candidate.version}")
+                            log("Skipping ${it.candidate.version}",filterOptions)
                             it.reject("Release candidate")
                         }
                     }
@@ -68,21 +68,21 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
         depVersion: String
     ): Boolean {
 
-        return when {
-            filterOptions.exclusiveQualifiers.isNotEmpty() -> {
-                log.quiet("exludesfilter: ${filterOptions.exclusiveQualifiers}")
-                filterOptions.exclusiveQualifiers.excludes(depVersion)
+        log("DependencyVersion: ${depVersion}", filterOptions)
 
+        return when {
+
+            filterOptions.exclusiveQualifiers.isNotEmpty() -> {
+                log("exclusiveQualifiers: ${filterOptions.exclusiveQualifiers}", filterOptions)
+                filterOptions.exclusiveQualifiers.excludes(depVersion)
             }
             filterOptions.inclusiveQualifiers.isNotEmpty() -> {
-
-                log.quiet("depversion ${depVersion}")
-                log.quiet("includesfilter ${filterOptions.inclusiveQualifiers}")
+                log("inclusiveQualifiers: ${filterOptions.inclusiveQualifiers}", filterOptions)
                 filterOptions.inclusiveQualifiers.includesNot(depVersion)
             }
             else -> {
 
-                log.quiet("ELSE default")
+                log("Using the default qualifiers:", filterOptions)
                 if (filterOptions.defaultInclusive) {
                     val includes = listOf(
                         "RELEASE",
@@ -90,7 +90,7 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
                         "GA"
                     )
 
-                    log.quiet("DEFAULT INCLUDES")
+                    log("default inclusiveQualifiers: $includes", filterOptions)
                     includes.includesNot(depVersion)
                 } else {
                     val excludes = listOf(
@@ -103,11 +103,17 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
                         "b"
                     )
 
-                    log.quiet("DEFAULT EXCLUDES")
+                    log("default exclusiveQualifiers: $excludes",filterOptions)
                     excludes.excludes(depVersion)
                 }
             }
         }
+    }
+
+    private fun log(message: String, filterOptions: GradleVersionsFilterExtension) {
+       if(filterOptions.log) {
+           log.quiet(message)
+       }
     }
 }
 
