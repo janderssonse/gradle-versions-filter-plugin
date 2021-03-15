@@ -56,9 +56,8 @@ This plugin should probably be deprecated at some point, if the options are give
 
 ## License
 
-Released under the Apache License 2.0
+[Apache License 2.0](LICENSE)
 
-[LICENSE](LICENSE)
 
 
 
