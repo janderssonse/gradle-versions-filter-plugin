@@ -8,6 +8,14 @@ plugins {
     id("com.gradle.plugin-publish") version "0.13.0"
 }
 
+//order matters for axion, configure this before project.version
+scmVersion {
+    tag.apply {
+        prefix = "v"
+        versionSeparator = ""
+    }
+}
+
 group = "se.ascp.gradle"
 project.version = scmVersion.version
 
@@ -42,13 +50,6 @@ gradlePlugin {
             description = "Extension of Gradle Versions Plugin (discovering dependency updates) with opinionated defaults."
             implementationClass = "se.ascp.gradle.GradleVersionsFilterPlugin"
         }
-    }
-}
-
-scmVersion {
-    tag.apply {
-        prefix = "v"
-        versionSeparator = ""
     }
 }
 
