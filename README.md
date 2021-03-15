@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/github.com/fsfe/reuse-tool)
+
 # Gradle Versions Filter Plugin
 
 A simple Gradle plugin, built on the [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) with sane no-configuration-defaults and customization options.
@@ -8,8 +10,7 @@ A simple Gradle plugin, built on the [Gradle Versions Plugin](https://github.com
 The Gradle Version Plugin leaves it to the user to configure what is a valid release.
 
 It became tiresome to copying a include or exclude policy to every project in a big codebase, so why not make a plugin out of it.
-Having less configuration in the build scripts, is better.
-It is fun to write a Gradle plugin with Kotlin :)
+Having less configuration in the build scripts, is better.. and, It is fun to write a Gradle plugin with Kotlin :)
 
 ## How?
 
