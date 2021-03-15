@@ -38,7 +38,7 @@ tasks {
 
 pluginBundle {
     website = "https://github.com/jandersson-svt/gradle-versions-filter-plugin"
-    vcsUrl = "git@github.com:jandersson-svt/gradle-versions-filter-plugin.git"
+    vcsUrl = "https://github.com/jandersson-svt/gradle-versions-filter-plugin.git"
     tags = listOf("versions", "filter")
 }
 
