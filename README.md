@@ -1,4 +1,4 @@
-[![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/github.com/fsfe/reuse-tool)
+[![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/github.com/fsfe/reuse-tool) [RELEASE status](https://img.shields.io/github/v/tag/jandersson-svt/gradle-versions-filter-plugin?style=flat-square)
 
 # Gradle Versions Filter Plugin
 
