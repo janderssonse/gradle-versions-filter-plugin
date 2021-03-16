@@ -8,6 +8,6 @@ open class GradleVersionsFilterExtension {
     var inclusiveQualifiers: List<String> = listOf()
     var exclusiveQualifiers: List<String> = listOf()
     var defaultInclusive: Boolean = false
-    var strictSemVer: Boolean = true
+    var strictSemVer: Boolean = false
     var log = false
 }

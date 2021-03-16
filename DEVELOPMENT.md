@@ -32,11 +32,11 @@ apply(plugin = "se.ascp.gradle.gradle-versions-filter")
 Configure
 
 ```kotlin
-versionsFilter {
-    exclusiveQualifiers = ["rc", "alpha", "beta", "m"]
-    defaultInclusive = true
+configure<GradleVersionsFilterExtension>{
+    log = true
 }
 ```
+(why not use versionsFilter{}? Because when plugin is applied by buildscript it is not typesafe)
 
 ## Run
 ```
