@@ -17,7 +17,7 @@ Besides that, to aggregate the configuration in the build scripts is better
 
 The plugin sets a sane default on what should be seen as the latest release. It either does this by having an inclusive (only include versions with these qualifiers) or the opposite, an exclusive policy.
 
-It can also optionally (default actually) use only [SemVer-compatible](https://semver.org/) releases.
+It can also optionally be set to use only [SemVer-compatible](https://semver.org/) releases.
 
 ## Usage
 
@@ -35,7 +35,7 @@ Run
 $ ./gradlew dependencyUpdates
 ```
 
-And that should be good enough for most people.
+And that should be good enough for most people. For further options, see the [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) project, they should all be compatible.
 
 Configurable Options:
 
@@ -44,7 +44,7 @@ Option               | Default                                    | Description
 defaultInclusive     | false                                      | The default strategy, excludes as default i.e. use the exclusiveQualifiers, if true, use inclusive Qualifiers
 inclusiveQualifiers  | "RELEASE","FINAL","GA"                     | The default inclusive qualifiers (if inclusive strategy is used) 
 exclusiveQualifiers  | "alpha","beta","rc","cr","m","preview","b" | The default exclusive qualifiers (if exclusive strategy is used) 
-strictSemVer         | true                                       | Only show strict SemVer-validated versions
+strictSemVer         | false                                       | Only show strict SemVer-validated versions
 log                  | false                                       | More verbose debug messages
 
 .Example Configuration
@@ -57,12 +57,12 @@ versionsFilter {
 ## Example output
 
 
-_Default Gradle Versions output_
+_Default Gradle Versions-Plugin output_ 
 
 ![](<./img/gradleversionsplugin.png>)
 
 
-_Default Gradle Versions Filter output (notice it lists latest stable versions)_
+_Default Gradle Versions Filter-Plugin output for same project (notice it lists latest stable versions)_
 
 ![](<./img/gradleversionsfilterplugin.png>)
 
