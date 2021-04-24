@@ -1,20 +1,21 @@
 plugins {
-    id("java-gradle-plugin")
+  //  id("java-gradle-plugin")
     kotlin("jvm") version "1.4.31"
-    id("maven-publish")
+ //   id("maven-publish")
     id("se.ascp.gradle.gradle-versions-filter") version "0.1.4" 
     id("org.owasp.dependencycheck") version "6.1.2"
-    id("pl.allegro.tech.build.axion-release") version "1.12.1"
-    id("com.gradle.plugin-publish") version "0.13.0"
+    id("pl.allegro.tech.build.axion-release") version "1.13.2"
+ //   id("com.gradle.plugin-publish") version "0.13.0"
+    id("se.svt.oss.gradle-yapp-publisher-plugin") version "0.1.5"
 }
 
 //order matters for axion, configure this before project.version
-scmVersion {
-    tag.apply {
-        prefix = "v"
-        versionSeparator = ""
-    }
-}
+//scmVersion {
+//    tag.apply {
+ //       prefix = "v"
+  //      versionSeparator = ""
+  //  }
+//}
 
 group = "se.ascp.gradle"
 project.version = scmVersion.version
@@ -36,7 +37,7 @@ tasks {
     }
 }
 
-pluginBundle {
+/*pluginBundle {
     website = "https://github.com/jandersson-svt/gradle-versions-filter-plugin"
     vcsUrl = "https://github.com/jandersson-svt/gradle-versions-filter-plugin.git"
     tags = listOf("versions", "filter")
@@ -52,7 +53,7 @@ gradlePlugin {
         }
     }
 }
-
+*/
 dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:[0.38.0,1.0.0)")
 
