@@ -6,7 +6,7 @@ plugins {
     id("org.owasp.dependencycheck") version "6.1.2"
     id("pl.allegro.tech.build.axion-release") version "1.13.2"
  //   id("com.gradle.plugin-publish") version "0.13.0"
-    id("se.svt.oss.gradle-yapp-publisher-plugin") version "0.1.5"
+    id("se.svt.oss.gradle-yapp-publisher-plugin") version "0.1.10"
 }
 
 //order matters for axion, configure this before project.version
