@@ -1,6 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 
-
 Files: .gitignore
 Copyright: Unknown
 License: CC0-1.0
@@ -17,8 +16,15 @@ Files: *.gradle.test
 Copyright: 2021 Josef Andersson
 License: CC0-1.0
 
-# Third-party files.
+Files: gradle.properties
+Copyright: 2021 Josef Andersson
+License: CC0-1.0
 
+Files: **/*.png
+Copyright: 2021 Josef Andersson
+License: CC0-1.0
+
+# Third-party files.
 
 Files: gradlew*
 Copyright: 2007-2020 The original author or authors <info@gradle.com>
