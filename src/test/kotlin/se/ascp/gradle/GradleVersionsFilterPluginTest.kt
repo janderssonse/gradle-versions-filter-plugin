@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test
 
 class GradleVersionsFilterPluginTest{
 
-    var qualifiers: List<String> = listOf("beta")
+    //var qualifiers: List<String> = listOf("beta")
     @Test
     fun applyPlugin(){
         val project = ProjectBuilder.builder().build()

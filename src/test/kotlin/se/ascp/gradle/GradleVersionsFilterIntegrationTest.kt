@@ -6,7 +6,6 @@ package se.ascp.gradle
 
 import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
-import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeAll
@@ -23,7 +22,7 @@ class GradleVersionsFilterIntegrationTest {
 
     private lateinit var tmpProjectSettingsFile: Path
     private lateinit var tmpProjectBuildFile: Path
-    private val tmpdir: String = System.getProperty("java.io.tmpdir");
+    private val tmpdir: String = System.getProperty("java.io.tmpdir")
 
     @BeforeAll
     fun setup() {
@@ -86,8 +85,8 @@ class GradleVersionsFilterIntegrationTest {
         val settings = "settings.gradle.test"
         val build = "build.gradle.test"
 
-        Files.copy(resource(settings).toPath(), tmpProjectSettingsFile, StandardCopyOption.REPLACE_EXISTING);
-        Files.copy(resource(build).toPath(), tmpProjectBuildFile, StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(resource(settings).toPath(), tmpProjectSettingsFile, StandardCopyOption.REPLACE_EXISTING)
+        Files.copy(resource(build).toPath(), tmpProjectBuildFile, StandardCopyOption.REPLACE_EXISTING)
 
         tmpProjectBuildFile.toFile().appendText(
             """
@@ -140,14 +139,14 @@ class GradleVersionsFilterIntegrationTest {
 
     private fun resource(resource: String): File = File(javaClass.classLoader.getResource(resource).file)
 
-    @AfterAll
-    private fun unpublish() {
+   // @AfterAll
+    //private fun unpublish() {
         //gradle unpublishToMavenLocal -- is there anything like without doing it manually?
         //In maven one can do:
         //mvn dependency:purge-local-repository -DreResolve=false
         //to remove a projects dependencies from local repo
         //However, as the local repo is set to the tmp dir, this does not really matter
-    }
+    //}
 
     companion object {
         @JvmStatic

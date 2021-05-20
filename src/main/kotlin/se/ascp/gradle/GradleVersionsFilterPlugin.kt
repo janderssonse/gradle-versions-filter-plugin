@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory
 
 class GradleVersionsFilterPlugin : Plugin<Project> {
 
-    //Funny logging - why not Kotlinglogging etc? See https://discuss.gradle.org/t/logging-in-gradle-plugin/31685/2
-    val log: Logger = LoggerFactory.getLogger("GradleVersionsFilterPlugin") as Logger
+    //Why not Kotlinglogging etc? See https://discuss.gradle.org/t/logging-in-gradle-plugin/31685/2
+    private val log: Logger = LoggerFactory.getLogger("GradleVersionsFilterPlugin") as Logger
 
     override fun apply(project: Project) {
 
@@ -34,10 +34,10 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
         project: Project,
         filterOptions: GradleVersionsFilterExtension
     ) {
-        project.tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure {
-            it.resolutionStrategy {
-                it.componentSelection {
-                    it.all {
+        project.tasks.named("dependencyUpdates", DependencyUpdatesTask::class.java).configure { task ->
+            task.resolutionStrategy { strategy ->
+                strategy.componentSelection { rules ->
+                    rules.all {
                         val semVerOk = semVerOk(filterOptions, it)
                         if (!semVerOk) {
                             log("Skipping ${it.candidate.version} due to no semantic versioning", filterOptions)
@@ -68,7 +68,7 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
         depVersion: String
     ): Boolean {
 
-        log("DependencyVersion: ${depVersion}", filterOptions)
+        log("DependencyVersion: $depVersion", filterOptions)
 
         return when {
 
@@ -120,7 +120,8 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
 fun String.isSemVer(): Boolean {
     //Using the official semver regex as found on https://semver.org/
     val semVerRegex =
-        """^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?${'$'}""".toRegex()
+        """^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)""".plus(
+    """(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?${'$'}""").toRegex()
     return semVerRegex.matches(this)
 }
 
