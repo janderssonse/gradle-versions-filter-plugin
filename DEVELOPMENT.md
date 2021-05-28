@@ -11,32 +11,39 @@ $ git clone
 ./gradlew publishToMavenLocal
 ``` 
 
-3. Apply the plugin in a project of your choice, this?
+3. In settings.gradle.kts, configure Gradle to look after local plugins (this has to be first in the file) 
 
 ```kotlin
-buildscript {
-    repositories {
-        mavenLocal()
-    }
+pluginManagement {
+repositories {
+mavenLocal()
+gradlePluginPortal()
+// maven(url="https://dl.bintray.com/kotlin/dokka")
+}
+}
+```
 
+4. Apply the plugin in a project of your choice, this?
 
-    dependencies {
-        classpath("se.ascp.gradle:gradle-versions-filter:0.1.0-SNAPSHOT")
-    }
+```kotlin
+
+olugins {
+
+        id("se.ascp.gradle:gradle-versions-filter") version "0.1.0-SNAPSHOT"
+    
 }
 
-apply(plugin = "se.ascp.gradle.gradle-versions-filter")
 
 ```
 
-Configure
+5. Configure it if you want to
+
 
 ```kotlin
-configure<GradleVersionsFilterExtension>{
-    log = true
+versionsFilter {
+    exclusiveQualifiers = ["rc", "alpha", "beta", "m"]
 }
 ```
-(why not use versionsFilter{}? Because when plugin is applied by buildscript it is not typesafe)
 
 ## Run
 ```
