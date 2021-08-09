@@ -1,21 +1,22 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
-    kotlin("jvm") version "1.4.32"
+    kotlin("jvm") version "1.4.31" //stick to the supported Gradle plugin version https://docs.gradle.org/current/userguide/compatibility.html
     id("java-gradle-plugin")
-    id("se.ascp.gradle.gradle-versions-filter") version "0.1.6"
-    id("org.owasp.dependencycheck") version "6.1.6"
-    id("pl.allegro.tech.build.axion-release") version "1.13.2"
+    id("se.ascp.gradle.gradle-versions-filter") version "0.1.8"
+    id("org.owasp.dependencycheck") version "6.2.2"
+    id("pl.allegro.tech.build.axion-release") version "1.13.3"
     id("io.gitlab.arturbosch.detekt") version "1.17.1"
-    id("se.svt.oss.gradle-yapp-publisher-plugin") version "0.1.12"
+    id("se.svt.oss.gradle-yapp-publisher-plugin") version "0.1.13"
 }
 
 group = "se.ascp.gradle"
 project.version = scmVersion.version
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "11"
 }
+
 
 repositories {
     gradlePluginPortal()
@@ -29,7 +30,7 @@ tasks {
 }
 
 dependencies {
-    implementation("com.github.ben-manes:gradle-versions-plugin:[0.38.0,1.0.0)")
+    implementation("com.github.ben-manes:gradle-versions-plugin:[0.39.0,1.0.0)")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.2")
@@ -37,5 +38,5 @@ dependencies {
 
 tasks.named<Wrapper>("wrapper") {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = "7.0.2"
+    gradleVersion = "7.1.1"
 }

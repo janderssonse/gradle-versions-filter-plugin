@@ -1,4 +1,7 @@
-[![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/github.com/fsfe/reuse-tool) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/jandersson-svt/gradle-versions-filter-plugin)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/jandersson-svt/gradle-versions-filter-plugin)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/github.com/fsfe/reuse-tool) 
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 # Gradle Versions Filter Plugin
 
@@ -48,10 +51,20 @@ exclusiveQualifiers  | "alpha","beta","rc","cr","m","preview","b" | default excl
 strictSemVer         | false                                       | only show strict SemVer-versions
 log                  | false                                       | verbose debug messages
 
-.Example Configuration
+In other words, if you do not configure anything, exclude strategy would be used and versions containing "alpha","beta","rc","cr","m","preview","b" would not be considered.
+
+Note: Option values are not case-sensitive
+
+## Example configuration 
+
+Overriding the defaults, this would show debug output and does NOT exclude "alpha" releases 
+
+
+build.gradle.kts
 ```kotlin
 versionsFilter {
-    exclusiveQualifiers = ["rc", "alpha", "beta", "m"]
+    exclusiveQualifiers = listOf("beta","rc","cr","m","preview","b" )
+    log = true
 }
 ```
 ## Example output
