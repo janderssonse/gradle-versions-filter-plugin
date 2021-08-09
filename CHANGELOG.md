@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 0.1.9 - 2021-08-09
 
 ### Added
-- Added this CHANGELOG.md, to improve the project changes
+- Added this CHANGELOG.md, to improve the projects description of changes
 - From now on, adhere to the [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) specification
 - Set the Java target to version 11 which is the latest LTS
 - Add badge for Conventional Commits, Apache License 2.0
