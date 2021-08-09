@@ -27,7 +27,7 @@ gradlePluginPortal()
 
 ```kotlin
 
-olugins {
+plugins {
 
         id("se.ascp.gradle:gradle-versions-filter") version "0.1.0-SNAPSHOT"
     
@@ -41,7 +41,7 @@ olugins {
 
 ```kotlin
 versionsFilter {
-    exclusiveQualifiers = ["rc", "alpha", "beta", "m"]
+    exclusiveQualifiers = listOf("rc", "alpha", "beta", "m")
 }
 ```
 
