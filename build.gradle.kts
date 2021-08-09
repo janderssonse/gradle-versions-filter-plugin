@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.4.31" //stick to the supported Gradle plugin version https://docs.gradle.org/current/userguide/compatibility.html
     id("java-gradle-plugin")
-    id("se.ascp.gradle.gradle-versions-filter") version "0.1.8"
+    id("se.ascp.gradle.gradle-versions-filter") version "0.1.9"
     id("org.owasp.dependencycheck") version "6.2.2"
     id("pl.allegro.tech.build.axion-release") version "1.13.3"
     id("io.gitlab.arturbosch.detekt") version "1.17.1"
