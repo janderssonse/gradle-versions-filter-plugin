@@ -5,9 +5,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.1.10 - 2021-08-09
+
+### Deprecated
+- The Git history - it was rebased
+
+### Fixed
+- Use version 0.1.9 of the plugin
+
 ## 0.1.9 - 2021-08-09
 
 ### Added
+- Project REBASED - check out a fresh clone, or git pull --rebase 
 - Added this CHANGELOG.md, to improve the projects description of changes
 - From now on, adhere to the [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) specification
 - Set the Java target to version 11 which is the latest LTS
