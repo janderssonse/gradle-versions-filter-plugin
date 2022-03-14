@@ -6,6 +6,10 @@ jobs:
     name: Analyse with ORT
 
     steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Ort action analyse step
         id: ort-action
         uses: janderssonse/ort-action@7fe10c0fb7ca3664138a60b2f84782dc9f32d677
