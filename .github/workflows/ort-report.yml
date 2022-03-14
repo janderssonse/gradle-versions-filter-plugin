@@ -1,0 +1,18 @@
+on: [push]
+
+jobs:
+  ort_report_job:
+    runs-on: ubuntu-latest
+    name: Analyse with ORT
+
+    steps:
+      - name: Ort action analyse step
+        id: ort-action
+        uses: janderssonse/ort-action@v1
+       
+      - name: ort-action-artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            name: analysis
+            path: ./reports
+
