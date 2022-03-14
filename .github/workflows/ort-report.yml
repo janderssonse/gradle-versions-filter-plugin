@@ -8,11 +8,17 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Checkout scancode results repo
+        uses: actions/checkout@v3
+        with:
+          repository: janderssonse/scancode-results
+          path: scancoderesults
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@6496b1b05a8e6eb5b088dd5a3ab3a38cd7cfd878
+        uses: janderssonse/ort-action@816f6331166021ab0ca14da51ceba760b36e04eb
        
       - name: ort-action-artifacts
         uses: actions/upload-artifact@v2
