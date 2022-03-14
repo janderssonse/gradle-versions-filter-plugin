@@ -12,7 +12,7 @@ jobs:
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@7fe10c0fb7ca3664138a60b2f84782dc9f32d677
+        uses: janderssonse/ort-action@471a3aa574dbe93569ccb32f5ec0b3786c236ef5
        
       - name: ort-action-artifacts
         uses: actions/upload-artifact@v2
