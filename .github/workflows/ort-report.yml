@@ -18,10 +18,11 @@ jobs:
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@af1c42438147f812d1aa5008cabcb9e82f5c3c58
+        uses: janderssonse/ort-action@6dc4684dceca28a75af9bcec6420d7226e29293c
         with:
           scan: false
-          ort_log_level: debug
+          ort_log_level: info
+        
        
       - name: ort-action-artifacts
         uses: actions/upload-artifact@v2
