@@ -22,6 +22,7 @@ jobs:
         with:
           scan: false
           ort_log_level: info
+          ort_conf: ort.conf
         
        
       - name: ort-action-artifacts
