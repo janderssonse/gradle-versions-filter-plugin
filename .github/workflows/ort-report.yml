@@ -16,11 +16,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: janderssonse/scancode-results
-          path: scancoderesults
+          path: scancode
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@be78acff2b87078d6f5920f2a929e089a43ada8a
+        uses: janderssonse/ort-action@8193d594b84c7813f7d37617313c1b827adcd5d8
         with:
           scan: true
           ort_log_level: info
