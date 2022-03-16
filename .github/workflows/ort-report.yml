@@ -20,7 +20,7 @@ jobs:
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@66c1235c2c48c2c37cd0e237b695b95592b05efa
+        uses: janderssonse/ort-action@6695f1e219a5b8724c4e41abb9737f277f5d5add
         with:
           scan: true
           ort_log_level: info
