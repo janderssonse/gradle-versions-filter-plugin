@@ -20,10 +20,10 @@ jobs:
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@c9e65c1e4fbe698c67bd5e4b6886b7a8a1d83aa1
+        uses: janderssonse/ort-action@8880bd6b5c0c8349422ac4916e0442a12e5f220a
         with:
           scan: true
-          ort_log_level: debug
+          ort_log_level: info
           ort_conf: ort.conf
         
        
