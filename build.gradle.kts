@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.31" //stick to the supported Gradle plugin version https://docs.gradle.org/current/userguide/compatibility.html
+    kotlin("jvm") version "1.5.30" //stick to the supported Gradle plugin version https://docs.gradle.org/current/userguide/compatibility.html
     id("java-gradle-plugin")
     id("se.ascp.gradle.gradle-versions-filter") version "0.1.9"
     id("org.owasp.dependencycheck") version "6.2.2"
@@ -38,5 +38,5 @@ dependencies {
 
 tasks.named<Wrapper>("wrapper") {
     distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = "7.1.1"
+    gradleVersion = "7.3.3"
 }
