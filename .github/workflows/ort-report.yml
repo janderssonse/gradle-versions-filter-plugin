@@ -31,5 +31,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: analysis
-            path: ./reports
+            path: ./main/reports
 
