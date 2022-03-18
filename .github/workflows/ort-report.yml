@@ -20,11 +20,11 @@ jobs:
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@8880bd6b5c0c8349422ac4916e0442a12e5f220a
+        uses: janderssonse/ort-action@589836b3795f11a49db708eb5a83e56b3b6952ae
         with:
-          scan: true
+          ort_disable_scan: true
           ort_log_level: info
-          ort_conf: ort.conf
+          ort_conf_file: ort.conf
         
        
       - name: ort-action-artifacts
