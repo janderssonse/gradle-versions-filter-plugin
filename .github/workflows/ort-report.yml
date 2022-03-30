@@ -13,15 +13,15 @@ jobs:
         with:
           path: project
 
-#     - name: Checkout scancode results repo
-#       uses: actions/checkout@v3
-#       with:
-#         repository: janderssonse/scancode-results
-#         path: scancode
+     - name: Checkout scancode results repo
+       uses: actions/checkout@v3
+       with:
+         repository: janderssonse/scancode-results
+         path: scancode
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@874fe9c00c4e64ad48d6fe0fc09ede281459b810 
+        uses: janderssonse/ort-action@0ec02d1e7bb53ee6ac7e98408b6dee8c0a443061
         with:
           ort_disable_scanner: true
           ort_cli_config_template: /tmp/ort.conf
@@ -29,6 +29,7 @@ jobs:
           ort_disable_evaluator: true
           ort_disable_advisor: false
           ort_log_level: info
+          ort_opts: -Xmx5120M
         
        
       - name: ort-action-artifacts
