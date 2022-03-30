@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: main
+          path: project
 
 #     - name: Checkout scancode results repo
 #       uses: actions/checkout@v3
