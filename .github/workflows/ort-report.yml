@@ -21,7 +21,7 @@ jobs:
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@c60e20fa776c11c457e4ab247e131067533e0151
+        uses: janderssonse/ort-action@f977cd1bba07393f1a797a489296900274acdc7b
         with:
           ort_disable_scanner: true
           ort_cli_config_template: /tmp/ort.conf
@@ -29,7 +29,7 @@ jobs:
           ort_disable_evaluator: true
           ort_disable_advisor: false
           ort_log_level: info
-          ort_opts: -Xmx5120M
+          ort_opts: \"-Xmx5120M\"
         
        
       - name: ort-action-artifacts
