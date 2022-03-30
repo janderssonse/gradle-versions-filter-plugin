@@ -13,11 +13,11 @@ jobs:
         with:
           path: main
 
-      - name: Checkout scancode results repo
-        uses: actions/checkout@v3
-        with:
-          repository: janderssonse/scancode-results
-          path: scancode
+#     - name: Checkout scancode results repo
+#       uses: actions/checkout@v3
+#       with:
+#         repository: janderssonse/scancode-results
+#         path: scancode
 
       - name: Ort action analyse step
         id: ort-action
