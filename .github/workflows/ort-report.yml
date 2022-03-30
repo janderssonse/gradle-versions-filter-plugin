@@ -21,7 +21,7 @@ jobs:
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-action@9d863040fd8d77626987941d8918ab2fb3f54024
+        uses: janderssonse/ort-action@8e784a01543bef43f862f038f5fa3d5ffd811ebe
         with:
           ort_disable_scanner: true
           ort_cli_config_template: /tmp/ort.conf
@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
             name: analysis
-            path: ./main/ort-results
+            path: ./project/ort-results
