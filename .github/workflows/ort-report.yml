@@ -27,6 +27,7 @@ jobs:
           ort_cli_config_template: /tmp/ort.conf
           ort_disable_downloader: true
           ort_disable_evaluator: true
+          ort_disable_advisor: false
           ort_log_level: info
         
        
