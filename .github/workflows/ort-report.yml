@@ -28,7 +28,7 @@ jobs:
           ort_disable_evaluator: true
           ort_disable_advisor: false
           #          ort_custom_cli_config_file: ''
-          ort_log_level: debug
+          ort_log_level: info
           ort_opts: -Xmx5120m
         
        
