@@ -23,7 +23,7 @@ jobs:
         id: ort-action
         uses: janderssonse/ort-ci-action@8f3499f4ec3f92325219114d7a40f13ee2448b8c
         with:
-          ort_disable_scanner: true
+          ort_disable_scanner: false
           ort_disable_downloader: true
           ort_disable_evaluator: true
           ort_disable_advisor: false
