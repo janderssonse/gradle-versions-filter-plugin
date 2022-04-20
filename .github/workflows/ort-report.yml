@@ -21,7 +21,7 @@ jobs:
 
       - name: Ort action analyse step
         id: ort-action
-        uses: janderssonse/ort-ci-action@70c1ad0cdf23a8ae9294ce7e980a16ad6db7757d
+        uses: janderssonse/ort-ci-action@ad8b5d0fad86cc58a58c084a49a22dda6ea9f625
         with:
           ort_disable_scanner: false
           ort_disable_downloader: true
