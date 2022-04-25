@@ -126,13 +126,13 @@ fun String.isSemVer(): Boolean {
 }
 
 fun List<String>.includesNot(version: String): Boolean {
-    return this.any { version.toUpperCase().contains(it.toUpperCase()) }.not()
+    return this.any { version.uppercase().contains(it.uppercase()) }.not()
 }
 
 fun List<String>.excludes(version: String): Boolean {
 
     val result = this.filter { qualifier ->
-        """(?i).*[.-]${qualifier.toUpperCase()}[.\d-]*""".toRegex().matches(version.toUpperCase())
+        """(?i).*[.-]${qualifier.uppercase()}[.\d-]*""".toRegex().matches(version.uppercase())
     }
     return result.isNotEmpty()
 }
