@@ -11,7 +11,7 @@ $ git clone
 ./gradlew publishToMavenLocal
 ``` 
 
-3. In settings.gradle.kts, configure Gradle to look after local plugins (this has to be first in the file) 
+3. In settings.gradle.kts, configure Gradle to look for local plugins (this has to be first in the file) 
 
 ```kotlin
 pluginManagement {
