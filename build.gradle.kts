@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "se.ascp.gradle"
-project.version = "1.0.0-SNAPSHOT"//scmVersion.version
+project.version = scmVersion.version
 
 kotlin {
     jvmToolchain {
