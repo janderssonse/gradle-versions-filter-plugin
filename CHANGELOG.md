@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.1.11 - 2022-04-25
 
-- Updated dependcies for base plugins. Gradle, Kotlin. Maintaince release, preparing for issue fixes.
+### Fixed
+- Update dependencies (preparation for issue fixing)
+
+## 0.1.10 - 2021-08-09
 
 ### Deprecated
 - The Git history - it was rebased
