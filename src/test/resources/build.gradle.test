@@ -1,3 +1,5 @@
+import se.ascp.gradle.Strategy.INCLUSIVE
+
 plugins {
     id("java-gradle-plugin")
     id("se.ascp.gradle.gradle-versions-filter")

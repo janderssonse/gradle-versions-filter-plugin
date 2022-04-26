@@ -39,17 +39,73 @@ class GradleVersionsFilterIntegrationTest {
 
     @Test
     fun `exclude release and final qualifiers`() {
-        test("""exclusiveQualifiers = listOf("release", "final")""", "99.0.1-rc")
+        test("""exclusiveQualifiers.addAll("release", "final")""", "99.0.1-rc")
     }
 
     @Test
     fun `include final qualifier`() {
-        test("""inclusiveQualifiers = listOf("final")""", "99.0.2-FINAL")
+        test(
+            """strategy.set(INCLUSIVE)
+            | inclusiveQualifiers.addAll("final")""".trimMargin(),
+            "99.0.2-FINAL"
+        )
     }
 
     @Test
-    fun `default includes allows RELEASE`() {
-        test("""defaultInclusive = true""", "99.0.5-RELEASE")
+    fun `includes allows RELEASE`() {
+        test("""strategy.set(INCLUSIVE)""", "99.0.5-RELEASE")
+    }
+
+    @Test
+    fun `or strategy permutation test`() {
+
+        test(
+            """strategy.set(se.ascp.gradle.Strategy.OR)
+            | inclusiveQualifiers.addAll("RELEASE")
+            | exclusiveQualifiers.addAll("rc")
+        """.trimMargin(),
+            "99.0.5-RELEASE"
+        )
+
+        test(
+            """strategy.set(se.ascp.gradle.Strategy.OR)
+            | inclusiveQualifiers.addAll("RELEASE")
+            | exclusiveQualifiers.addAll("")
+        """.trimMargin(),
+            "99.0.5-RELEASE"
+        )
+
+        test(
+            """strategy.set(se.ascp.gradle.Strategy.OR)
+            | inclusiveQualifiers.addAll("")
+            | exclusiveQualifiers.addAll("rc")
+        """.trimMargin(),
+            "99.0.5-RELEASE"
+        )
+
+        test(
+            """strategy.set(se.ascp.gradle.Strategy.OR)
+            | inclusiveQualifiers.addAll("")
+            | exclusiveQualifiers.addAll("RELEASE")
+        """.trimMargin(),
+            "99.0.2-FINAL"
+        )
+
+        test(
+            """strategy.set(se.ascp.gradle.Strategy.OR)
+            | inclusiveQualifiers.addAll("")
+            | exclusiveQualifiers.addAll("")
+        """.trimMargin(),
+            "99.0.5-RELEASE"
+        )
+
+        test(
+            """strategy.set(se.ascp.gradle.Strategy.OR)
+            | inclusiveQualifiers.addAll("RELEASE","FINAL")
+            | exclusiveQualifiers.addAll("RELEASE")
+        """.trimMargin(),
+            "99.0.2-FINAL"
+        )
     }
 
     @Test
@@ -61,7 +117,6 @@ class GradleVersionsFilterIntegrationTest {
     fun `no strict semver allowed`() {
         test("", "100.nosemver", false)
     }
-
 
     private fun publishLocalRepo(version: String) {
 
@@ -77,7 +132,6 @@ class GradleVersionsFilterIntegrationTest {
             .withPluginClasspath()
             .forwardOutput()
             .build()
-
     }
 
     private fun test(filterOption: String, version: String, strictSemVer: Boolean = true) {
@@ -92,9 +146,9 @@ class GradleVersionsFilterIntegrationTest {
             """
             versionsFilter {
                     $filterOption
-                    strictSemVer = $strictSemVer
+                    strictSemVer.set($strictSemVer)
                 }
-        """.trimIndent()
+            """.trimIndent()
         )
 
         val result = GradleRunner.create()
@@ -112,6 +166,7 @@ class GradleVersionsFilterIntegrationTest {
 
     private fun buildtestFile(version: String) =
         """
+    
     plugins {
         id("java-gradle-plugin")
         id("maven-publish")
@@ -139,14 +194,14 @@ class GradleVersionsFilterIntegrationTest {
 
     private fun resource(resource: String): File = File(javaClass.classLoader.getResource(resource).file)
 
-   // @AfterAll
-    //private fun unpublish() {
-        //gradle unpublishToMavenLocal -- is there anything like without doing it manually?
-        //In maven one can do:
-        //mvn dependency:purge-local-repository -DreResolve=false
-        //to remove a projects dependencies from local repo
-        //However, as the local repo is set to the tmp dir, this does not really matter
-    //}
+    // @AfterAll
+    // private fun unpublish() {
+    // gradle unpublishToMavenLocal -- is there anything like without doing it manually?
+    // In maven one can do:
+    // mvn dependency:purge-local-repository -DreResolve=false
+    // to remove a projects dependencies from local repo
+    // However, as the local repo is set to the tmp dir, this does not really matter
+    // }
 
     companion object {
         @JvmStatic

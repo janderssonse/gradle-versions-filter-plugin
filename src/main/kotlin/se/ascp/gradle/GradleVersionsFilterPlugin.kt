@@ -11,10 +11,12 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.logging.Logger
 import org.slf4j.LoggerFactory
+import se.ascp.gradle.Strategy.EXCLUSIVE
+import se.ascp.gradle.Strategy.INCLUSIVE
 
 class GradleVersionsFilterPlugin : Plugin<Project> {
 
-    //Why not Kotlinglogging etc? See https://discuss.gradle.org/t/logging-in-gradle-plugin/31685/2
+    // Why not Kotlinglogging etc? See https://discuss.gradle.org/t/logging-in-gradle-plugin/31685/2
     private val log: Logger = LoggerFactory.getLogger("GradleVersionsFilterPlugin") as Logger
 
     override fun apply(project: Project) {
@@ -44,7 +46,7 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
                             it.reject("Release candidate")
                         }
                         if (semVerOk && rejectVersion(filterOptions, it.candidate.version)) {
-                            log("Skipping ${it.candidate.version}",filterOptions)
+                            log("Skipping ${it.candidate.version}", filterOptions)
                             it.reject("Release candidate")
                         }
                     }
@@ -57,7 +59,7 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
         filterOptions: GradleVersionsFilterExtension,
         it: ComponentSelectionWithCurrent
     ): Boolean {
-        return when (filterOptions.strictSemVer) {
+        return when (filterOptions.strictSemVer.get()) {
             true -> it.candidate.version.isSemVer()
             else -> true
         }
@@ -70,58 +72,37 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
 
         log("DependencyVersion: $depVersion", filterOptions)
 
-        return when {
-
-            filterOptions.exclusiveQualifiers.isNotEmpty() -> {
-                log("exclusiveQualifiers: ${filterOptions.exclusiveQualifiers}", filterOptions)
-                filterOptions.exclusiveQualifiers.excludes(depVersion)
+        return when (filterOptions.strategy.get()) {
+            EXCLUSIVE -> {
+                log("exclusiveQualifiers: ${filterOptions.exclusiveQualifiers.get().joinToString()}", filterOptions)
+                filterOptions.exclusiveQualifiers.get().excludes(depVersion)
             }
-            filterOptions.inclusiveQualifiers.isNotEmpty() -> {
-                log("inclusiveQualifiers: ${filterOptions.inclusiveQualifiers}", filterOptions)
-                filterOptions.inclusiveQualifiers.includesNot(depVersion)
+            INCLUSIVE -> {
+                log("inclusiveQualifiers: ${filterOptions.inclusiveQualifiers.get().joinToString()}", filterOptions)
+                filterOptions.inclusiveQualifiers.get().includesNot(depVersion)
             }
             else -> {
-
-                log("Using the default qualifiers:", filterOptions)
-                if (filterOptions.defaultInclusive) {
-                    val includes = listOf(
-                        "RELEASE",
-                        "FINAL",
-                        "GA"
-                    )
-
-                    log("default inclusiveQualifiers: $includes", filterOptions)
-                    includes.includesNot(depVersion)
-                } else {
-                    val excludes = listOf(
-                        "alpha",
-                        "beta",
-                        "rc",
-                        "cr",
-                        "m",
-                        "preview",
-                        "b"
-                    )
-
-                    log("default exclusiveQualifiers: $excludes",filterOptions)
-                    excludes.excludes(depVersion)
-                }
+                log("OR Strategy: ${filterOptions.inclusiveQualifiers.get().joinToString()}", filterOptions)
+                log("OR Strategy: ${filterOptions.exclusiveQualifiers.get().joinToString()}", filterOptions)
+                filterOptions.exclusiveQualifiers.get().excludes(depVersion)
+                    .or(filterOptions.inclusiveQualifiers.get().includesNot(depVersion))
             }
         }
     }
 
     private fun log(message: String, filterOptions: GradleVersionsFilterExtension) {
-       if(filterOptions.log) {
-           log.quiet(message)
-       }
+        if (filterOptions.log.get()) {
+            log.quiet(message)
+        }
     }
 }
 
 fun String.isSemVer(): Boolean {
-    //Using the official semver regex as found on https://semver.org/
+    // Using the official semver regex as found on https://semver.org/
     val semVerRegex =
         """^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)""".plus(
-    """(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?${'$'}""").toRegex()
+            """(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?${'$'}"""
+        ).toRegex()
     return semVerRegex.matches(this)
 }
 
