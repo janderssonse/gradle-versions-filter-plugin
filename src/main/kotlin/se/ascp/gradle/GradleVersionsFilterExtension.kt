@@ -32,4 +32,14 @@ open class GradleVersionsFilterExtension @Inject constructor(objects: ObjectFact
     var strategy: Property<Strategy> = objects.property(Strategy::class.java).convention(Strategy.EXCLUSIVE)
     var strictSemVer: Property<Boolean> = objects.property(Boolean::class.java).convention(false)
     var log: Property<Boolean> = objects.property(Boolean::class.java).convention(false)
+
+    // DependencyUpdateTask options
+    var revision: Property<String> = objects.property(String::class.java).convention("")
+    var gradleReleaseChannel: Property<String> = objects.property(String::class.java).convention("release-candidate")
+    var outputDir: Property<String> = objects.property(String::class.java).convention("build/dependencyUpdates")
+    var reportFileName: Property<String> = objects.property(String::class.java).convention("report")
+    var checkForGradleUpdate: Property<Boolean> = objects.property(Boolean::class.java).convention(true)
+    var checkConstraints: Property<Boolean> = objects.property(Boolean::class.java).convention(false)
+    var checkBuildEnvironmentConstraints: Property<Boolean> = objects.property(Boolean::class.java).convention(false)
+    var outPutFormatter: Property<String> = objects.property(String::class.java).convention("plain")
 }
