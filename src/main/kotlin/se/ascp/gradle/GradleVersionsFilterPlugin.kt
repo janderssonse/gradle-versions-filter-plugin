@@ -52,6 +52,15 @@ class GradleVersionsFilterPlugin : Plugin<Project> {
                     }
                 }
             }
+            task.apply {
+                gradleReleaseChannel = filterOptions.gradleReleaseChannel.get()
+                outputDir = filterOptions.outputDir.get()
+                reportfileName = filterOptions.reportFileName.get()
+                checkForGradleUpdate = filterOptions.checkForGradleUpdate.get()
+                checkConstraints = filterOptions.checkConstraints.get()
+                checkBuildEnvironmentConstraints = filterOptions.checkBuildEnvironmentConstraints.get()
+                outputFormatter = filterOptions.outPutFormatter.get()
+            }
         }
     }
 

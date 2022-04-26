@@ -55,6 +55,19 @@ In other words, if you do not configure anything, exclude strategy would be used
 
 Note: Option values are not case-sensitive
 
+( And most of the options you can set in the original Versions plugin can also be set, as follows, if you really need to. They are forwarded.)
+But, if you need to start configuring a lot, maybe the original plugin is the way to go).
+
+| Option                           | Default                 | Description                             |
+|----------------------------------|-------------------------|-----------------------------------------|
+| gradleReleaseChannel             | release-candidate       | See the Versions Plugin for description |
+| reportfileName                   | report                  | See the Versions Plugin for description |
+| outputDir                        | build/dependencyUpdates | See the Versions Plugin for description |
+| checkForGradleUpdate             | true                    | See the Versions Plugin for description |
+| checkConstraints                 | false                   | See the Versions Plugin for description |
+| checkBuildEnvironmentConstraints | false                   | See the Versions Plugin for description |
+| outputFormatter                  | plain                   | See the Versions Plugin for description |
+
 ## Example configuration 
 
 
@@ -74,8 +87,11 @@ versionsFilter {
 versionsFilter {
     strategy.set(se.ascp.gradle.Strategy.INCLUSIVE)
     inclusiveQualifiers.addAll("FINAL")
+    checkForGradleUpdate.set(false)
+    
 }
 ```
+
 ## Example output
 
 
