@@ -5,6 +5,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.1.12 - 2022-04-26
+
+### Added
+- Strategy concept: inclusive, exclusive, or (considers both sets) 
+- Lazy configuration of properties
+
+### Changed
+- Breaking: Older configurations that did not use defaults have to be updated, see README examples.
+
 ## 0.1.11 - 2022-04-25
 
 ### Fixed

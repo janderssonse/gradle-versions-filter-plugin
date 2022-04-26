@@ -43,13 +43,13 @@ Add an issue if not.
 
 Configurable Options:
 
-Option               | Default                                    | Description
--------------------- | -----------------------------------------  | --------------
-defaultInclusive     | false                                      | default strategy mode - inclusive (true) or exclusive (false)
-inclusiveQualifiers  | "RELEASE","FINAL","GA"                     | default inclusive mode qualifiers 
-exclusiveQualifiers  | "alpha","beta","rc","cr","m","preview","b" | default exclusive mode qualifiers 
-strictSemVer         | false                                       | only show strict SemVer-versions
-log                  | false                                       | verbose debug messages
+| Option              | Default                                    | Description                                      |
+|---------------------|--------------------------------------------|--------------------------------------------------|
+| inclusiveQualifiers | "RELEASE","FINAL","GA"                     | default inclusive mode qualifiers                |
+| exclusiveQualifiers | "alpha","beta","rc","cr","m","preview","b" | default exclusive mode qualifiers                |
+| strategy            | EXCLUSIVE                                  | default strategy mode - EXCLUSIVE, INCLUSIVE, OR |
+| strictSemVer        | false                                      | only show strict SemVer-versions                 |
+| log                 | false                                      | verbose debug messages                           |
 
 In other words, if you do not configure anything, exclude strategy would be used and versions containing "alpha","beta","rc","cr","m","preview","b" would not be considered.
 
@@ -57,14 +57,23 @@ Note: Option values are not case-sensitive
 
 ## Example configuration 
 
-Overriding the defaults, this would show debug output and does NOT exclude "alpha" releases 
 
+### Configuration examples
 
+#### Overriding defaults, this would show debug output and does NOT exclude "alpha" releases
 build.gradle.kts
 ```kotlin
 versionsFilter {
-    exclusiveQualifiers = listOf("beta","rc","cr","m","preview","b" )
-    log = true
+    exclusiveQualifiers.addAll("beta","rc","cr","m","preview","b" )
+    log.set(true)
+}
+```
+
+#### Overriding defaults, this uses inclusive strategy, and does only consider "FINAL" releases
+```kotlin
+versionsFilter {
+    strategy.set(se.ascp.gradle.Strategy.INCLUSIVE)
+    inclusiveQualifiers.addAll("FINAL")
 }
 ```
 ## Example output

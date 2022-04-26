@@ -41,7 +41,7 @@ plugins {
 
 ```kotlin
 versionsFilter {
-    exclusiveQualifiers = listOf("rc", "alpha", "beta", "m")
+    exclusiveQualifiers.addAll("rc", "alpha", "beta", "m")
 }
 ```
 
