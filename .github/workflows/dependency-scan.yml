@@ -21,7 +21,7 @@ jobs:
 
       - name: ORT CI Action
         id: ort-ci-action
-        uses: janderssonse/ort-ci-action@e7d28329164bf61ef7f33055b1a93015eab2ed9b
+        uses: janderssonse/ort-ci-action@ef80df83b377a0ef9ffe5a43ed0cc35d9e77e3a0
         with:
           ort_disable_scanner: true
           ort_disable_downloader: true
