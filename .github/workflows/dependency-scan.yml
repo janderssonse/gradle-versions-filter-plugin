@@ -21,15 +21,12 @@ jobs:
 
       - name: ORT CI Action
         id: ort-ci-action
-        uses: janderssonse/ort-ci-action@ef80df83b377a0ef9ffe5a43ed0cc35d9e77e3a0
+        uses: janderssonse/ort-ci-action@1826d38b454085a3cd12ce3f89b1cf1019eecc30
         with:
           ort_disable_scanner: true
           ort_disable_downloader: true
           ort_disable_evaluator: true
           ort_disable_advisor: false
-          ort_cli_config_tmpl: "ort.conf.tmpl"
-          ort_config_file: ''
-          ort_log_level: info
           ort_opts: -Xmx5120m
         
        
