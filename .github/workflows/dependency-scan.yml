@@ -5,6 +5,12 @@ jobs:
   ort_report_job:
     runs-on: ubuntu-latest
     name: ORT Scan Dependendencies
+    container:
+     image: ghcr.io/janderssonse/ort-ci-action:latest
+     credentials:
+      username: ${{ github.actor }}
+      password: ${{ secrets.github_token }}
+
 
     steps:
 
