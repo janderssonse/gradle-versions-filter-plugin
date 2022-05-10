@@ -21,9 +21,12 @@ jobs:
           
       - name: ORT CI Action
         id: ort-ci-action
-        uses: janderssonse/ort-ci-action@d2782c619365c23d067a89b963d4b918b0463899
+        uses: janderssonse/ort-ci-action@043e9f22fa0d09ec59f229fc578dbb22b6e2ab09
         with:
-          action_secret: ${{ secrets.ACTIONCI }}
+          registry_host: "ghcr.io"
+          registry_username: ${{ github.actor }}
+          registry_password: ${{ secrets.ACTIONCI }}
+
           ort_disable_scanner: true
           ort_disable_downloader: true
           ort_disable_evaluator: true
