@@ -7,7 +7,6 @@
 
 A simple Gradle plugin, built on the [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) with sane no-configuration-defaults and customization options.
 
-
 ## Why?
 
 The Gradle Version Plugin (which we love) leaves it up to the user to [configure and define](https://github.com/ben-manes/gradle-versions-plugin#revisions) what is a stable or an unstable version.
