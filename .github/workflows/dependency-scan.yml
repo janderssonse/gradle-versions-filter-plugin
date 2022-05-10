@@ -20,7 +20,7 @@ jobs:
 #         path: scancoderesults
 
       - name: Log in to registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+        run: echo "${{ secrets.actionci }}" | docker login ghcr.io -u janderssonse --password-stdin
 
       - name: ORT CI Action
         id: ort-ci-action
