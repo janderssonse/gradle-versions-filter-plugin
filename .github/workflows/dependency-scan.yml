@@ -18,17 +18,10 @@ jobs:
 #       with:
 #         repository: janderssonse/scancode-results
 #         path: scancoderesults
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.ACTIONCI }}
           
       - name: ORT CI Action
         id: ort-ci-action
-        uses: janderssonse/ort-ci-action@1826d38b454085a3cd12ce3f89b1cf1019eecc30
+        uses: janderssonse/ort-ci-action@f98a5416ab1a50778405b52ca20cc51d1d43dad0
         with:
           ort_disable_scanner: true
           ort_disable_downloader: true
