@@ -23,7 +23,7 @@ jobs:
         id: ort-ci-action
         uses: janderssonse/ort-ci-action@d2782c619365c23d067a89b963d4b918b0463899
         with:
-          action_secrets: ${{ secrets.ACTIONCI }}
+          action_secret: ${{ secrets.ACTIONCI }}
           ort_disable_scanner: true
           ort_disable_downloader: true
           ort_disable_evaluator: true
