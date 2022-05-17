@@ -1,9 +1,9 @@
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/jandersson-svt/gradle-versions-filter-plugin)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![REUSE status](https://api.reuse.software/badge/github.com/fsfe/reuse-tool)](https://api.reuse.software/info/github.com/fsfe/reuse-tool) 
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-
 # Gradle Versions Filter Plugin
+
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/janderssonse/gradle-versions-filter-plugin)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![REUSE status](https://api.reuse.software/badge/github.com/janderssonse/gradle-versions-filter-plugin)](https://api.reuse.software/info/github.com/janderssonse/gradle-versions-filter-plugin)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 A simple Gradle plugin, built on the [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) with sane no-configuration-defaults and customization options.
 
@@ -16,7 +16,7 @@ It might become tiresome to add an include or exclude policy to every project in
 
 ## How?
 
-The plugin sets a default on what should be seen as the latest release. 
+The plugin sets a default on what should be seen as the latest release.
 It either does this by having an inclusive or an exclusive policy.
 
 It can also be configured to only use [SemVer-compatible](https://semver.org/) releases.
@@ -34,7 +34,7 @@ plugins {
 Run
 
 ```shell
-$ ./gradlew dependencyUpdates
+./gradlew dependencyUpdates
 ```
 
 And - that should be good enough for most people. For further options, see the [Gradle Versions Plugin](https://github.com/ben-manes/gradle-versions-plugin) project, they *should* all be compatible.
@@ -68,7 +68,7 @@ But, if you need to start configuring a lot, maybe the original plugin is the wa
 | checkBuildEnvironmentConstraints | false                   | See the Versions Plugin for description |
 | outputFormatter                  | plain                   | See the Versions Plugin for description |
 
-## Example configuration 
+## Example configuration
 
 
 ### Configuration examples
@@ -95,14 +95,14 @@ versionsFilter {
 ## Example output
 
 
-_Default Gradle Versions-Plugin output_ 
+*Default Gradle Versions-Plugin output*
 
-![](<./img/gradleversionsplugin.png>)
+![Example of default Gradle versions output](<./img/gradleversionsplugin.png>)
 
 
-_Default Gradle Versions Filter-Plugin output for same project (notice it lists latest stable versions)_
+*Default Gradle Versions Filter-Plugin output for same project (notice it lists latest stable versions)*
 
-![](<./img/gradleversionsfilterplugin.png>)
+![Example of this plugins output](<./img/gradleversionsfilterplugin.png>)
 
 
 ## Notes
@@ -111,7 +111,7 @@ This plugin should probably be deprecated at some point, if the options are give
 
 ## License
 
-This project is released under the 
+This project is released under the
 
 [Apache License 2.0](LICENSE)
 

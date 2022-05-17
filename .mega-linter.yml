@@ -1,0 +1,9 @@
+---
+PRINT_ALPACA: false
+EMAIL_REPORTER: false
+APPLY_FIXES: all
+
+# Lint specifig settings
+ENABLE: [KOTLIN, MARKDOWN, YAML, COPYPASTE]
+
+COPYPASTE_JSCPD_ARGUMENTS: --ignore "build,report,LICENSES,.idea" --threshold "10"

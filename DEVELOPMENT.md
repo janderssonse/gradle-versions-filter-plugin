@@ -1,17 +1,17 @@
 # Development
 1. Clone
 
-```
-$ git clone  
+```console
+git clone  
 ```
 
-2. In the folder X, install the plugin to your local repository 
+2. In the folder X, install the plugin to your local repository
 
-```
+```console
 ./gradlew publishToMavenLocal
-``` 
+```
 
-3. In settings.gradle.kts, configure Gradle to look for local plugins (this has to be first in the file) 
+3. In settings.gradle.kts, configure Gradle to look for local plugins (this has to be first in the file)
 
 ```kotlin
 pluginManagement {
@@ -46,6 +46,6 @@ versionsFilter {
 ```
 
 ## Run
-```
+```console
 ./gradlew dependencyUpdates 
 ```
