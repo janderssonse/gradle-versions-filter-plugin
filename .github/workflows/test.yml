@@ -1,5 +1,5 @@
 name: Gradle Clean Build
-oon: [workflow_call] # yamllint disable-line rule:truthyn: [push, pull_request}
+on: [workflow_call] # yamllint disable-line rule:truthyn: [push, pull_request}
 jobs:
   gradle:
     strategy:
