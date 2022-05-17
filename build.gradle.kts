@@ -2,11 +2,11 @@
 plugins {
     kotlin("jvm") version "1.6.0" // stick to the supported Gradle plugin version https://docs.gradle.org/current/userguide/compatibility.html
     id("java-gradle-plugin")
-    id("se.ascp.gradle.gradle-versions-filter") version "0.1.12+"
+    id("se.ascp.gradle.gradle-versions-filter") version "0.1.13+"
     id("org.owasp.dependencycheck") version "7.1.0.1"
     id("pl.allegro.tech.build.axion-release") version "1.13.6"
     id("io.gitlab.arturbosch.detekt") version "1.20.0"
-    id("se.svt.oss.gradle-yapp-publisher-plugin") version "0.1.15"
+    id("se.svt.oss.gradle-yapp-publisher-plugin") version "0.1.16"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 

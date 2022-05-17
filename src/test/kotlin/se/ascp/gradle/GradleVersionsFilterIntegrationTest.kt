@@ -46,7 +46,8 @@ class GradleVersionsFilterIntegrationTest {
     fun `include final qualifier`() {
         test(
             """strategy.set(INCLUSIVE)
-            | inclusiveQualifiers.addAll("final")""".trimMargin(),
+            | inclusiveQualifiers.addAll("final")
+            """.trimMargin(),
             "99.0.2-FINAL"
         )
     }
@@ -63,7 +64,7 @@ class GradleVersionsFilterIntegrationTest {
             """strategy.set(se.ascp.gradle.Strategy.OR)
             | inclusiveQualifiers.addAll("RELEASE")
             | exclusiveQualifiers.addAll("rc")
-        """.trimMargin(),
+            """.trimMargin(),
             "99.0.5-RELEASE"
         )
 
@@ -71,7 +72,7 @@ class GradleVersionsFilterIntegrationTest {
             """strategy.set(se.ascp.gradle.Strategy.OR)
             | inclusiveQualifiers.addAll("RELEASE")
             | exclusiveQualifiers.addAll("")
-        """.trimMargin(),
+            """.trimMargin(),
             "99.0.5-RELEASE"
         )
 
@@ -79,7 +80,7 @@ class GradleVersionsFilterIntegrationTest {
             """strategy.set(se.ascp.gradle.Strategy.OR)
             | inclusiveQualifiers.addAll("")
             | exclusiveQualifiers.addAll("rc")
-        """.trimMargin(),
+            """.trimMargin(),
             "99.0.5-RELEASE"
         )
 
@@ -87,7 +88,7 @@ class GradleVersionsFilterIntegrationTest {
             """strategy.set(se.ascp.gradle.Strategy.OR)
             | inclusiveQualifiers.addAll("")
             | exclusiveQualifiers.addAll("RELEASE")
-        """.trimMargin(),
+            """.trimMargin(),
             "99.0.2-FINAL"
         )
 
@@ -95,7 +96,7 @@ class GradleVersionsFilterIntegrationTest {
             """strategy.set(se.ascp.gradle.Strategy.OR)
             | inclusiveQualifiers.addAll("")
             | exclusiveQualifiers.addAll("")
-        """.trimMargin(),
+            """.trimMargin(),
             "99.0.5-RELEASE"
         )
 
@@ -103,7 +104,7 @@ class GradleVersionsFilterIntegrationTest {
             """strategy.set(se.ascp.gradle.Strategy.OR)
             | inclusiveQualifiers.addAll("RELEASE","FINAL")
             | exclusiveQualifiers.addAll("RELEASE")
-        """.trimMargin(),
+            """.trimMargin(),
             "99.0.2-FINAL"
         )
     }
@@ -159,7 +160,8 @@ class GradleVersionsFilterIntegrationTest {
             .build()
 
         val resultText: String = """The following dependencies have later milestone versions:
-        | - se.ascp.gradle:gradle-versions-filter-test [0.0.1 -> $version]""".trimMargin()
+        | - se.ascp.gradle:gradle-versions-filter-test [0.0.1 -> $version]
+        """.trimMargin()
         assertTrue(result.output.contains(resultText))
         assertEquals(TaskOutcome.SUCCESS, result.task(":dependencyUpdates")?.outcome)
     }
