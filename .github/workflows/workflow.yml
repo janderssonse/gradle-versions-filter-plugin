@@ -1,7 +1,13 @@
 ---
-name: gradle-yapp-publisher-plugin workflow
+name: gradle-versions-filter-plugin workflow
 
-on: [push, pull_request] # yamllint disable-line rule:truthy
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   dco:
