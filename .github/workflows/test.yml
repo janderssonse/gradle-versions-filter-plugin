@@ -14,8 +14,10 @@ jobs:
           java-version: "11"
           distribution: "adopt"
 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+      - name: Run build with Gradle wrapper
+        run: ./gradlew clean build
+      - name: Upload build reports
+        uses: actions/upload-artifact@v3
         with:
-          cache-disabled: true
-          arguments: clean build
+          name: build-reports
+          path: build/reports/
