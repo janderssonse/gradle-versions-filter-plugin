@@ -32,7 +32,7 @@ class GradleVersionsFilterIntegrationTest {
         Files.createDirectories(Paths.get(installPluginDir()))
         Files.createDirectories(Paths.get(installLibDir()))
 
-        //install plugin under test
+        // install plugin under test
         copyProjectFilesToTestTmpDir(File("../"), installPluginDir())
         var pluginSettingsPath = Paths.get("${installPluginDir()}/settings.gradle.kts")
         var pluginBuildFilePath = Paths.get("${installPluginDir()}/gradle-versions-filter/build.gradle.kts")
@@ -44,11 +44,11 @@ class GradleVersionsFilterIntegrationTest {
             pluginBuildFile("200.0.0")
         )
 
-        //install test lib - this is mocked as a real dir, (guava) as the versions plugins needs a real published art
+        // install test lib - this is mocked as a real dir, (guava) as the versions plugins needs a real published art
         copyProjectFilesToTestTmpDir(resource("a-java-lib"), installLibDir())
         val libSettingsPath = Paths.get("${installLibDir()}/settings.gradle.kts")
         val libBuildFilePath = Paths.get("${installLibDir()}/lib/build.gradle.kts")
-        //setup a few versions
+        // setup a few versions
         publishLocalRepo(
             libSettingsPath,
             libBuildFilePath,
@@ -122,7 +122,8 @@ class GradleVersionsFilterIntegrationTest {
         test(
             """exclusiveQualifiers.addAll("release", "final")
             | checkForGradleUpdate.set(false)
-        """.trimMargin(), "99.0.1-rc"
+            """.trimMargin(),
+            "99.0.1-rc"
         )
     }
 
@@ -142,7 +143,8 @@ class GradleVersionsFilterIntegrationTest {
         test(
             """strategy.set(se.ascp.gradle.Strategy.INCLUSIVE)
             | checkForGradleUpdate.set(false)
-        """.trimMargin(), "99.0.5-RELEASE"
+            """.trimMargin(),
+            "99.0.5-RELEASE"
         )
     }
 
@@ -210,7 +212,6 @@ class GradleVersionsFilterIntegrationTest {
             "", "99.0.5-RELEASE"
 
         )
-        val a = ""
     }
 
     @Test
@@ -241,8 +242,7 @@ class GradleVersionsFilterIntegrationTest {
 
     private fun test(filterOption: String, version: String, strictSemVer: Boolean = true) {
 
-
-        val buildFilePath= Paths.get("${installLibDir()}/lib/build.gradle.kts")
+        val buildFilePath = Paths.get("${installLibDir()}/lib/build.gradle.kts")
         buildFilePath.toFile().writeText(javalibBuildfile(version))
         buildFilePath.toFile().appendText(
             """
@@ -351,8 +351,7 @@ testing {
 }
     
     
-""".trimIndent()
-
+    """.trimIndent()
 
     private fun javalibSettings(libname: String = "") =
         """
