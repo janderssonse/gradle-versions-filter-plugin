@@ -16,4 +16,3 @@ jobs:
 
       - name: Run build with Gradle wrapper
         run: ./gradlew clean build
-      - name: Upload build reports
