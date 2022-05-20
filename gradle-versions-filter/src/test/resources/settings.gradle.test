@@ -1,2 +1,0 @@
-rootProject.name = "gradle-versions-filter-plugin-test"
-include("gradle-versions-filter")
