@@ -6,4 +6,4 @@ APPLY_FIXES: all
 # Lint specifig settings
 ENABLE: [KOTLIN, MARKDOWN, YAML, COPYPASTE]
 
-COPYPASTE_JSCPD_ARGUMENTS: --ignore "build,report,LICENSES,.idea" --threshold "10"
+COPYPASTE_JSCPD_ARGUMENTS: --ignore "**/build/**","report","LICENSES",".idea/**" --threshold "10"

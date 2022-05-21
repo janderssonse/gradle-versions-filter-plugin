@@ -74,7 +74,9 @@ But, if you need to start configuring a lot, maybe the original plugin is the wa
 ### Configuration examples
 
 #### Overriding defaults, this would show debug output and does NOT exclude "alpha" releases
-build.gradle.kts
+
+In build.gradle.kts
+
 ```kotlin
 versionsFilter {
     exclusiveQualifiers.addAll("beta","rc","cr","m","preview","b" )
@@ -83,9 +85,10 @@ versionsFilter {
 ```
 
 #### Overriding defaults, this uses inclusive strategy, and does only consider "FINAL" releases
+
 ```kotlin
 versionsFilter {
-    strategy.set(se.ascp.gradle.Strategy.INCLUSIVE)
+    strategy.set(Strategy.INCLUSIVE)
     inclusiveQualifiers.addAll("FINAL")
     checkForGradleUpdate.set(false)
     

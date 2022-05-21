@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 0.1.15 - 2022-05-19
+
+### Added
+- Refactor structure for better following recommended Gradle structure conventions
+
+### Changed
+- Updated dependencies for publishing.
+
 ## 0.1.14 - 2022-05-17
 
 ### Added
