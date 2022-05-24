@@ -35,7 +35,6 @@ jobs:
           ort_disable_advisor: false
           ort_opts: -Xmx5120m
         
-       
       - name: ort-action-artifacts
         uses: actions/upload-artifact@v2
         with:
