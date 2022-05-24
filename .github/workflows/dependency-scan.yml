@@ -1,0 +1,43 @@
+name: ORT Scan
+on: [push]
+
+jobs:
+  ort_report_job:
+    runs-on: ubuntu-latest
+    name: ORT Scan Dependendencies
+    container:
+     image: ghcr.io/janderssonse/ort-ci-action:latest
+     credentials:
+      username: ${{ github.actor }}
+      password: ${{ secrets.github_token }}
+
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: project
+
+#     - name: Checkout scancode results repo
+#       uses: actions/checkout@v3
+#       with:
+#         repository: janderssonse/scancode-results
+#         path: scancoderesults
+
+      - name: ORT CI Action
+        id: ort-ci-action
+        uses: janderssonse/ort-ci-action@1826d38b454085a3cd12ce3f89b1cf1019eecc30
+        with:
+          ort_disable_scanner: true
+          ort_disable_downloader: true
+          ort_disable_evaluator: true
+          ort_disable_advisor: false
+          ort_opts: -Xmx5120m
+        
+       
+      - name: ort-action-artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            name: analysis
+            path: ./project/ort-results
