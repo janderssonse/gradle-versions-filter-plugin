@@ -13,7 +13,7 @@ env:
   NOTICE_FILE:
   ORT_ALLOW_DYNAMIC_VERSIONS:
   ORT_CONFIG_FILE:
-  ORT_CLI_CONFIG_TMPL: "${{ github.workspace }}/ort-ci-base/templates/ort.conf.github.tmpl"
+  ORT_CLI_CONFIG_TMPL: "${{ github.workspace }}/ort-ci-base/templates/ort.conf.tmpl"
   ORT_CONFIG_REPO_URL:
   ORT_CONFIG_REVISION:
   ORT_DISABLE_ADVISOR: "false"
