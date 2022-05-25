@@ -1,5 +1,5 @@
 name: ORT Scan
-on: [push]
+on: [label]
 
 jobs:
   ort_report_job:
