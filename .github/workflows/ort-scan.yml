@@ -13,7 +13,7 @@ env:
   NOTICE_FILE:
   ORT_ALLOW_DYNAMIC_VERSIONS:
   ORT_CONFIG_FILE:
-  ORT_CLI_CONFIG_TMPL: "ort.conf.github.tmpl"
+  ORT_CLI_CONFIG_TMPL: "${{ github.workspace }}/ort-ci-base/templates/ort.conf.github.tmpl"
   ORT_CONFIG_REPO_URL:
   ORT_CONFIG_REVISION:
   ORT_DISABLE_ADVISOR: "false"
@@ -68,7 +68,6 @@ jobs:
         env:
           ORT_SCRIPTS_DIR: "${{ github.workspace }}/ort-ci-base/src/scripts"
         run: |
-          ORT_CLI_CONFIG_TMPL: "${{ github.workspace }}/ort-ci-base/templates/${{ env.ORT_CLI_CONFIG_TMPL }}"
           . "${GITHUB_WORKSPACE}"/ort-ci-base/src/ort-ci-main.sh && main
 
       - name: ort-action-artifacts
