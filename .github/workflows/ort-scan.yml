@@ -68,7 +68,7 @@ jobs:
         env:
           ORT_SCRIPTS_DIR: "${{ github.workspace }}/ort-ci-base/src/scripts"
         run: |
-          ORT_CLI_CONFIG_TMPL: "${{ github.workspace }}/ort-ci-base/templates/${{ inputs.ort_cli_config_tmpl }}$ORT_CLI_CONFIG_TMPL"
+          ORT_CLI_CONFIG_TMPL: "${{ github.workspace }}/ort-ci-base/templates/${{ env.ORT_CLI_CONFIG_TMPL }}"
           . "${GITHUB_WORKSPACE}"/ort-ci-base/src/ort-ci-main.sh && main
 
       - name: ort-action-artifacts
