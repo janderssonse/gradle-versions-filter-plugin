@@ -1,10 +1,9 @@
-
 # SPDX-FileCopyrightText: 2022 Josef Andersson
 #
 # SPDX-License-Identifier: CC0-1.0
 
 ---
-name: "ORT CI GitHub Scan"
+name: "ORT CI GitHub Scan Template"
 on: [push]
 
 env:
@@ -37,7 +36,7 @@ env:
 jobs:
   ort_report_job:
     runs-on: ubuntu-latest
-    name: ORT Scan Dependendencies
+    name: Scan dependendencies
     container:
       image: ghcr.io/janderssonse/ort-ci-action:latest
       credentials:
@@ -45,23 +44,17 @@ jobs:
         password: ${{ secrets.github_token }}
 
     steps:
-      - name: Checkout ORT CI Base
+      - name: Checkout ORT CI base
         id: checkout-ort-scripts
         uses: actions/checkout@v3
         with:
           repository: ${{ env.ORT_CI_BASE_REPO_URI }}
           path: ort-ci-base
 
-      - name: Checkout the project
+      - name: Checkout the project to scan
         uses: actions/checkout@v3
         with:
           path: project
-
-      #     - name: Checkout scancode results repo
-      #       uses: actions/checkout@v3
-      #       with:
-      #         repository: janderssonse/scancode-results
-      #         path: scancoderesults
 
       - name: ORT CI Action
         id: ort-ci
