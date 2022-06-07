@@ -1,7 +1,7 @@
 # Gradle Versions Filter Plugin
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/janderssonse/gradle-versions-filter-plugin)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://spdx.org/licenses/Apache-2.0.html)
 [![REUSE status](https://api.reuse.software/badge/github.com/janderssonse/gradle-versions-filter-plugin)](https://api.reuse.software/info/github.com/janderssonse/gradle-versions-filter-plugin)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
