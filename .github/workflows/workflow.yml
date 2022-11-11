@@ -4,10 +4,10 @@ name: gradle-versions-filter-plugin workflow
 on:
   push:
     branches:
-      - main
+      - madin
   pull_request:
     branches:
-      - main
+      - madin
 
 jobs:
   license:
