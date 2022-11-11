@@ -10,8 +10,6 @@ on:
       - main
 
 jobs:
-  commitlint:
-    uses: ./.github/workflows/commitlint.yml
   license:
     uses: ./.github/workflows/license.yml
   test:
