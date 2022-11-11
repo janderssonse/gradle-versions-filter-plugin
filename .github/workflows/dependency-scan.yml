@@ -1,40 +1,18 @@
-name: ORT Scan
-on: [label]
+name: ORT
+
+on: 
+  workflow_dispatch:
 
 jobs:
-  ort_report_job:
+  ort_scan:
     runs-on: ubuntu-latest
-    name: ORT Scan Dependendencies
-    container:
-      image: ghcr.io/janderssonse/ort-ci-action:latest
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.github_token }}
-
+    name: Scan project with ORT
     steps:
-      - name: Checkout
+      - name: Checkout project
         uses: actions/checkout@v3
         with:
           path: project
-
-      #     - name: Checkout scancode results repo
-      #       uses: actions/checkout@v3
-      #       with:
-      #         repository: janderssonse/scancode-results
-      #         path: scancoderesults
-
-      - name: ORT CI Action
-        id: ort-ci-action
-        uses: janderssonse/ort-ci-action@1826d38b454085a3cd12ce3f89b1cf1019eecc30
+      - id: foo
+        uses: jandersssonse/ort-ci-github-action@main
         with:
-          ort_disable_scanner: true
-          ort_disable_downloader: true
-          ort_disable_evaluator: true
-          ort_disable_advisor: false
-          ort_opts: -Xmx5120m
-
-      - name: ort-action-artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: analysis
-          path: ./project/ort-results
+          sw-name: 'Gradle Versions'
