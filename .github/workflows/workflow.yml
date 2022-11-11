@@ -10,8 +10,6 @@ on:
       - main
 
 jobs:
-  dco:
-    uses: ./.github/workflows/dco.yml
   commitlint:
     uses: ./.github/workflows/commitlint.yml
   license:
